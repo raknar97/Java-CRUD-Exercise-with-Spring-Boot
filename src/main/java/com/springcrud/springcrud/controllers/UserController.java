@@ -14,6 +14,7 @@ public class UserController {
     @Autowired
     UserRepository userRepository;
 
+    //GET
     @GetMapping("/users/{id}")
     User getUserById(@PathVariable Integer id) {
         return userRepository.findById(id).orElse(null);
@@ -24,12 +25,21 @@ public class UserController {
         return userRepository.findAll();
     }
 
+    //POST
     @PostMapping("/users")
     User createUser(@RequestBody User user) {
         return userRepository.save(user);
     }
 
 
+    //PUT
+    @PutMapping("/users")
+    User updateUser(@RequestBody User user){
+        return userRepository.save(user);
+    }
+
+
+    //DELETE
     @DeleteMapping("/users/{id}")
     void deleteUserById(@PathVariable Integer id) {
         userRepository.deleteById(id);
