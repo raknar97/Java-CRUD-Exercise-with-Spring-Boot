@@ -4,10 +4,7 @@ package com.springcrud.springcrud.controllers;
 import com.springcrud.springcrud.entities.User;
 import com.springcrud.springcrud.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -23,15 +20,20 @@ public class UserController {
     }
 
     @GetMapping("/users")
-    List<User> getUsers(){
-     return userRepository.findAll();
+    List<User> getUsers() {
+        return userRepository.findAll();
     }
+
+    @PostMapping("/users")
+    User createUser(@RequestBody User user) {
+        return userRepository.save(user);
+    }
+
 
     @DeleteMapping("/users/{id}")
     void deleteUserById(@PathVariable Integer id) {
         userRepository.deleteById(id);
     }
-
 
 
 }

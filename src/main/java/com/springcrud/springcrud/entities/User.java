@@ -16,7 +16,7 @@ import java.util.*;
 @NoArgsConstructor
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)//es como el auto-increment de MySql
     private Integer id;
     private String name;
     private Date birthdate;
