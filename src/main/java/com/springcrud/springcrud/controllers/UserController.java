@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.List;
+
 @RestController
 public class UserController {
 
@@ -20,10 +22,16 @@ public class UserController {
         return userRepository.findById(id).orElse(null);
     }
 
+    @GetMapping("/users")
+    List<User> getUsers(){
+     return userRepository.findAll();
+    }
+
     @DeleteMapping("/users/{id}")
     void deleteUserById(@PathVariable Integer id) {
         userRepository.deleteById(id);
     }
+
 
 
 }
