@@ -6,6 +6,7 @@ import com.springcrud.springcrud.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -27,14 +28,14 @@ public class UserController {
 
     //POST
     @PostMapping("/users")
-    User createUser(@RequestBody User user) {
+    User createUser(@Valid @RequestBody User user) {
         return userRepository.save(user);
     }
 
 
     //PUT
     @PutMapping("/users")
-    User updateUser(@RequestBody User user){
+    User updateUser(@Valid @RequestBody User user){
         return userRepository.save(user);
     }
 
